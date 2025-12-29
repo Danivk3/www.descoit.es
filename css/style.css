@@ -24,14 +24,14 @@
 }
 
 body {
-    font-family: Inter;
+    font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
     color: var(--gray-color);
     background-color: #fff;
 }
 
 h1, h2, h3, h4 {
-    font-family: Inter;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     line-height: 1.3;
 }
@@ -182,7 +182,7 @@ section {
 }
 
 .logo-title {
-    font-family: Inter;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 1.8rem;
     color: var(--text-light);
@@ -191,7 +191,7 @@ section {
 }
 
 .logo-subtitle {
-    font-family: Inter;
+    font-family: 'Open Sans', sans-serif;
     font-size: 0.8rem;
     color: rgba(255, 255, 255, 0.8);
     font-weight: 600;
@@ -779,7 +779,7 @@ section {
     padding: 15px;
     border: 1px solid var(--light-gray);
     border-radius: 5px;
-    font-family: Inter;
+    font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
     transition: var(--transition);
     background-color: white;
