@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad | Desco IT & Security Solutions</title>
+    <meta name="description" content="Política de privacidad de Desco IT & Security Solutions. Cómo tratamos y protegemos tus datos personales.">
+    <meta name="robots" content="noindex, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Política de Privacidad - Desco IT & Security Solutions">
+    <meta property="og:description" content="Cómo protegemos y gestionamos tus datos personales">
+    <meta property="og:type" content="website">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ============================================
+           ESTILOS GENERALES (Mismo que main site) - ACTUALIZADO
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0f172a;
+            --secondary-color: #2563eb;
+            --accent-color: #1e40af;
+            --dark-color: #0f172a;
+            --light-color: #f8fafc;
+            --light-bg: #f1f5f9;
+            --gray-color: #333333;
+            --light-gray: #e2e8f0;
+            --text-light: #ffffff;
+            --success-color: #10b981;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--gray-color);
+            background-color: var(--light-bg);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header ACTUALIZADO - Logo más grande sin cambiar espaciado */
+        .legal-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1e293b 100%);
+            color: var(--text-light);
+            padding: 40px 0 30px; /* Reducido el padding inferior para compensar */
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .legal-header .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .legal-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px; /* Reducido para compensar logo más grande */
+            text-decoration: none;
+        }
+
+        .legal-logo-img {
+            height: 100px; /* Aumentado de 80px a 100px */
+            width: auto;
+            max-width: 350px; /* Aumentado para mantener proporción */
+        }
+
+        .legal-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            margin-top: 5px; /* Ajuste fino para compensar */
+        }
+
+        .legal-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-top: 5px; /* Ajuste fino para compensar */
+        }
+
+        /* Contenido Principal */
+        .legal-content {
+            background-color: white;
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: var(--shadow);
+            margin-bottom: 60px;
+            border: 1px solid var(--light-gray);
+        }
+
+        .legal-section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .legal-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .legal-section h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .legal-section h2 i {
+            color: var(--secondary-color);
+        }
+
+        .legal-section h3 {
+            color: var(--dark-color);
+            font-size: 1.4rem;
+            margin: 25px 0 15px 0;
+        }
+
+        .legal-section p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+            color: #4b5563;
+        }
+
+        .legal-section ul, .legal-section ol {
+            margin: 15px 0 20px 30px;
+        }
+
+        .legal-section li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+
+        .info-box {
+            background-color: #f0f9ff;
+            border-left: 4px solid var(--secondary-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+
+        .info-box strong {
+            color: var(--primary-color);
+        }
+
+        /* Footer Legal */
+        .legal-footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+
+        .legal-footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .legal-footer-brand {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .legal-footer-brand h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .legal-footer-links {
+            flex: 2;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .legal-footer-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .legal-footer-col ul {
+            list-style: none;
+        }
+
+        .legal-footer-col li {
+            margin-bottom: 10px;
+        }
+
+        .legal-footer-col a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legal-footer-col a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .legal-footer-col a i {
+            font-size: 0.9rem;
+        }
+
+        .legal-footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .legal-footer-bottom p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Botón Volver */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: var(--transition);
+        }
+
+        .back-button:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .legal-header {
+                padding: 30px 0 25px;
+            }
+            
+            .legal-logo-img {
+                height: 80px; /* Reducido proporcionalmente */
+                max-width: 280px;
+            }
+            
+            .legal-logo {
+                margin-bottom: 12px;
+            }
+            
+            .legal-header h1 {
+                font-size: 2rem;
+                margin-top: 3px;
+            }
+            
+            .legal-content {
+                padding: 30px 20px;
+            }
+            
+            .legal-footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .legal-footer-brand {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .legal-header {
+                padding: 25px 0 20px;
+            }
+            
+            .legal-logo-img {
+                height: 70px; /* Reducido proporcionalmente */
+                max-width: 250px;
+            }
+            
+            .legal-logo {
+                margin-bottom: 10px;
+            }
+            
+            .legal-header h1 {
+                font-size: 1.8rem;
+                margin-top: 2px;
+            }
+            
+            .legal-section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .legal-section h3 {
+                font-size: 1.2rem;
+            }
+            
+            .legal-content {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Actualizado -->
+    <header class="legal-header">
+        <div class="container">
+            <a href="index.html" class="legal-logo">
+                <img src="assets/images/logo-sinfondo.png" alt="Desco IT & Security Solutions - Soporte informático para empresas Madrid" class="legal-logo-img">
+            </a>
+            <h1>🔐 POLÍTICA DE PRIVACIDAD</h1>
+            <p>Tu privacidad es importante para nosotros. Esta política explica cómo recopilamos, usamos y protegemos tu información.</p>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="container">
+        <div class="legal-content">
+            <section class="legal-section">
+                <h2><i class="fas fa-user-shield"></i> Responsable del tratamiento</h2>
+                <div class="info-box">
+                    <p><strong>Titular:</strong> Daniel Escobar</p>
+                    <p><strong>Nombre comercial:</strong> Desco IT</p>
+                    <p><strong>Email de contacto:</strong> daniel.escobar@descoit.es</p>
+                    <p><strong>Sitio web:</strong> www.descoit.es</p>
+                </div>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fas fa-bullseye"></i> Finalidad del tratamiento</h2>
+                <p>Los datos personales recogidos a través de este sitio web se utilizan únicamente para:</p>
+                <ul>
+                    <li>Responder a consultas enviadas mediante el formulario de contacto</li>
+                    <li>Gestionar solicitudes de información sobre nuestros servicios</li>
+                    <li>Enviar información relevante sobre nuestros servicios (solo si nos has dado permiso)</li>
+                </ul>
+                <p><strong>No se utilizan los datos con fines comerciales automatizados ni se ceden a terceros sin tu consentimiento explícito.</strong></p>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fas fa-balance-scale"></i> Legitimación</h2>
+                <p>La base legal para el tratamiento de los datos es el consentimiento del usuario al enviar el formulario de contacto o solicitar información sobre nuestros servicios.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fas fa-database"></i> Conservación de los datos</h2>
+                <p>Los datos se conservarán únicamente durante el tiempo necesario para atender la solicitud y cumplir con obligaciones legales. En ningún caso se conservarán por más de 5 años desde la última interacción.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fas fa-gavel"></i> Derechos del usuario</h2>
+                <p>Como usuario, tienes derecho a:</p>
+                <ul>
+                    <li><strong>Acceso:</strong> Saber qué datos tenemos sobre ti</li>
+                    <li><strong>Rectificación:</strong> Corregir datos inexactos</li>
+                    <li><strong>Supresión:</strong> Solicitar la eliminación de tus datos</li>
+                    <li><strong>Oposición:</strong> Oponerte al tratamiento de tus datos</li>
+                    <li><strong>Limitación:</strong> Limitar el uso de tus datos</li>
+                    <li><strong>Portabilidad:</strong> Obtener tus datos en formato estructurado</li>
+                </ul>
+                <p>Para ejercer cualquiera de estos derechos, envía un email a <strong>daniel.escobar@descoit.es</strong> indicando tu solicitud y adjuntando una copia de tu DNI o documento identificativo.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fas fa-shield-alt"></i> Medidas de seguridad</h2>
+                <p>Desco IT adopta las medidas técnicas y organizativas necesarias para garantizar la seguridad de los datos personales y evitar su alteración, pérdida, tratamiento o acceso no autorizado.</p>
+                <p>Entre otras medidas:</p>
+                <ul>
+                    <li>Cifrado de comunicaciones (HTTPS/SSL)</li>
+                    <li>Acceso restringido a datos personales</li>
+                    <li>Copias de seguridad periódicas</li>
+                    <li>Actualizaciones regulares de seguridad</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fas fa-envelope"></i> Contacto</h2>
+                <p>Para cualquier duda relacionada con esta política de privacidad, puedes contactarnos en:</p>
+                <div class="info-box">
+                    <p><strong>Email:</strong> daniel.escobar@descoit.es</p>
+                    <p><strong>Dirección:</strong> Madrid, España</p>
+                    <p><strong>Horario de atención:</strong> Lunes a Viernes de 9:00 a 18:00</p>
+                </div>
+            </section>
+
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Volver a la Página Principal
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="legal-footer">
+        <div class="container">
+            <div class="legal-footer-content">
+                <div class="legal-footer-brand">
+                    <h3>Desco IT & Security Solutions</h3>
+                    <p>Tu socio tecnológico de confianza en Madrid. Especialistas en soporte IT y ciberseguridad para PYMES.</p>
+                </div>
+                <div class="legal-footer-links">
+                    <div class="legal-footer-col">
+                        <h4>Documentos Legales</h4>
+                        <ul>
+                            <li><a href="privacidad.html"><i class="fas fa-chevron-right"></i> Política de Privacidad</a></li>
+                            <li><a href="aviso-legal.html"><i class="fas fa-chevron-right"></i> Aviso Legal</a></li>
+                            <li><a href="cookies.html"><i class="fas fa-chevron-right"></i> Política de Cookies</a></li>
+                            <li><a href="terminos.html"><i class="fas fa-chevron-right"></i> Términos y Condiciones</a></li>
+                        </ul>
+                    </div>
+                    <div class="legal-footer-col">
+                        <h4>Navegación</h4>
+                        <ul>
+                            <li><a href="index.html#inicio"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                            <li><a href="index.html#servicios"><i class="fas fa-chevron-right"></i> Servicios</a></li>
+                            <li><a href="index.html#planes"><i class="fas fa-chevron-right"></i> Planes</a></li>
+                            <li><a href="index.html#contacto"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+                        </ul>
+                    </div>
+                    <div class="legal-footer-col">
+                        <h4>Contacto</h4>
+                        <ul>
+                            <li><a href="mailto:info@descoit.com"><i class="fas fa-chevron-right"></i> info@descoit.com</a></li>
+                            <li><a href="tel:+34636314288"><i class="fas fa-chevron-right"></i> +34 636 314 288</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Madrid, España</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="legal-footer-bottom">
+                <p>&copy; 2025 Desco IT & Security Solutions. Todos los derechos reservados.</p>
+                <p><small>Última actualización: Enero 2026</small></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script para manejar enlaces suaves
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#' || href.startsWith('#!')) return;
+                
+                e.preventDefault();
+                const targetElement = document.querySelector(href);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

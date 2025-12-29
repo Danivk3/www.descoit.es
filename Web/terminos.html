@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Términos y Condiciones | Desco IT & Security Solutions</title>
+    <meta name="description" content="Términos y condiciones de uso de Desco IT & Security Solutions. Condiciones generales para el uso de nuestros servicios.">
+    <meta name="robots" content="noindex, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Términos y Condiciones - Desco IT & Security Solutions">
+    <meta property="og:description" content="Condiciones generales para el uso de nuestros servicios">
+    <meta property="og:type" content="website">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ============================================
+           ESTILOS GENERALES (Mismo que main site) - ACTUALIZADO
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0f172a;
+            --secondary-color: #2563eb;
+            --accent-color: #1e40af;
+            --dark-color: #0f172a;
+            --light-color: #f8fafc;
+            --light-bg: #f1f5f9;
+            --gray-color: #333333;
+            --light-gray: #e2e8f0;
+            --text-light: #ffffff;
+            --success-color: #10b981;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--gray-color);
+            background-color: var(--light-bg);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header ACTUALIZADO - Logo más grande sin cambiar espaciado */
+        .legal-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1e293b 100%);
+            color: var(--text-light);
+            padding: 40px 0 30px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .legal-header .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .legal-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            text-decoration: none;
+        }
+
+        .legal-logo-img {
+            height: 100px;
+            width: auto;
+            max-width: 350px;
+        }
+
+        .legal-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            margin-top: 5px;
+        }
+
+        .legal-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-top: 5px;
+        }
+
+        /* Contenido Principal */
+        .legal-content {
+            background-color: white;
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: var(--shadow);
+            margin-bottom: 60px;
+            border: 1px solid var(--light-gray);
+        }
+
+        .legal-section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .legal-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .legal-section h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .legal-section h2 i {
+            color: var(--secondary-color);
+        }
+
+        .legal-section h3 {
+            color: var(--dark-color);
+            font-size: 1.4rem;
+            margin: 25px 0 15px 0;
+        }
+
+        .legal-section p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+            color: #4b5563;
+        }
+
+        .legal-section ul, .legal-section ol {
+            margin: 15px 0 20px 30px;
+        }
+
+        .legal-section li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+
+        .info-box {
+            background-color: #f0f9ff;
+            border-left: 4px solid var(--secondary-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+
+        .info-box strong {
+            color: var(--primary-color);
+        }
+
+        .warning-box {
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+
+        /* Footer Legal */
+        .legal-footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+
+        .legal-footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .legal-footer-brand {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .legal-footer-brand h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .legal-footer-links {
+            flex: 2;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .legal-footer-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .legal-footer-col ul {
+            list-style: none;
+        }
+
+        .legal-footer-col li {
+            margin-bottom: 10px;
+        }
+
+        .legal-footer-col a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legal-footer-col a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .legal-footer-col a i {
+            font-size: 0.9rem;
+        }
+
+        .legal-footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .legal-footer-bottom p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Botón Volver */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: var(--transition);
+        }
+
+        .back-button:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .legal-header {
+                padding: 30px 0 25px;
+            }
+            
+            .legal-logo-img {
+                height: 80px;
+                max-width: 280px;
+            }
+            
+            .legal-logo {
+                margin-bottom: 12px;
+            }
+            
+            .legal-header h1 {
+                font-size: 2rem;
+                margin-top: 3px;
+            }
+            
+            .legal-content {
+                padding: 30px 20px;
+            }
+            
+            .legal-footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .legal-footer-brand {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .legal-header {
+                padding: 25px 0 20px;
+            }
+            
+            .legal-logo-img {
+                height: 70px;
+                max-width: 250px;
+            }
+            
+            .legal-logo {
+                margin-bottom: 10px;
+            }
+            
+            .legal-header h1 {
+                font-size: 1.8rem;
+                margin-top: 2px;
+            }
+            
+            .legal-section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .legal-section h3 {
+                font-size: 1.2rem;
+            }
+            
+            .legal-content {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Actualizado -->
+    <header class="legal-header">
+        <div class="container">
+            <a href="index.html" class="legal-logo">
+                <img src="assets/images/logo-sinfondo.png" alt="Desco IT & Security Solutions - Soporte informático para empresas Madrid" class="legal-logo-img">
+            </a>
+            <h1>📜 TÉRMINOS Y CONDICIONES DE USO</h1>
+            <p>Condiciones generales para el uso de nuestro sitio web y servicios.</p>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="container">
+        <div class="legal-content">
+            <section class="legal-section">
+                <h2><i class="fas fa-user-check"></i> Aceptación de los términos</h2>
+                <p>El acceso y uso de este sitio web atribuye la condición de usuario, implicando la aceptación plena y sin reservas de todas y cada una de las disposiciones incluidas en estos Términos y Condiciones de Uso.</p>
+                
+                <p>Si no estás de acuerdo con alguna de las condiciones establecidas, por favor, no utilices este sitio web.</p>
+                
+                <div class="info-box">
+                    <p><strong>Fecha de entrada en vigor:</strong> 1 de enero de 2026</p>
+                    <p><strong>Última actualización:</strong> 1 de enero de 2026</p>
+                </div>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fas fa-users"></i> Usuario</h2>
+                <p>Se entiende por usuario toda persona que acceda, navegue, utilice o participe en los servicios y actividades, gratuitas u onerosas, desarrolladas en el sitio web.</p>
+                
+                <p>El usuario se compromete a utilizar el sitio web de conformidad con la ley, la moral, el orden público y los presentes Términos y Condiciones.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fas fa-handshake"></i> Uso del sitio web</h2>
+                <h3>Uso permitido</h3>
+                <p>El usuario se compromete a hacer un uso adecuado del contenido y servicios ofrecidos a través del sitio web, y con carácter enunciativo pero no limitativo, a no emplearlos para:</p>
+                
+                <ul>
+                    <li>Incurrir en actividades ilícitas, ilegales o contrarias a la buena fe y al orden público</li>
+                    <li>Difundir contenidos o propaganda de carácter racista, xenófobo, pornográfico, de apología del terrorismo o que atente contra los derechos humanos</li>
+                    <li>Provocar daños en los sistemas físicos y lógicos de Desco IT, de sus proveedores o de terceras personas</li>
+                    <li>Intentar acceder y, en su caso, utilizar las cuentas de correo electrónico de otros usuarios y modificar o manipular sus mensajes</li>
+                    <li>Utilizar el sitio web con fines comerciales no autorizados</li>
+                </ul>
+                
+                <div class="warning-box">
+                    <p><strong>Reserva de derechos:</strong> Desco IT se reserva el derecho de retirar todos aquellos comentarios y contribuciones que vulneren el respeto a la dignidad de la persona, que sean discriminatorios, xenófobos, racistas, pornográficos, que atenten contra la juventud o la infancia, el orden o la seguridad pública o que, a su juicio, no resultaran adecuados para su publicación.</p>
+                </div>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fas fa-shield-alt"></i> Propiedad intelectual e industrial</h2>
+                <p>Desco IT es titular de todos los derechos de propiedad intelectual e industrial de su sitio web, así como de los elementos contenidos en el mismo (a título enunciativo, imágenes, sonido, audio, vídeo, software o textos; marcas o logotipos, combinaciones de colores, estructura y diseño, selección de materiales usados, programas de ordenador necesarios para su funcionamiento, acceso y uso, etc.).</p>
+                
+                <p>Quedan expresamente prohibidas la reproducción, la distribución y la comunicación pública, incluida su modalidad de puesta a disposición, de la totalidad o parte de los contenidos de este sitio web, con fines comerciales, en cualquier soporte y por cualquier medio técnico, sin la autorización de Desco IT.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fas fa-exclamation-triangle"></i> Exclusión de garantías y responsabilidad</h2>
+                <p>Desco IT no se responsabiliza, en ningún caso, de los daños y perjuicios de cualquier naturaleza que pudieran ocasionar, a título enunciativo: errores u omisiones en los contenidos, falta de disponibilidad del sitio web o la transmisión de virus o programas maliciosos o lesivos en los contenidos, a pesar de haber adoptado todas las medidas tecnológicas necesarias para evitarlo.</p>
+                
+                <p>El contenido de este sitio web tiene un carácter meramente informativo. Desco IT no se responsabiliza de las decisiones tomadas por el usuario basándose en la información proporcionada en el sitio web.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fas fa-link"></i> Enlaces</h2>
+                <p>En el caso de que en el sitio web se dispusieran enlaces o hipervínculos hacia otros sitios de Internet, Desco IT no ejercerá ningún tipo de control sobre dichos sitios y contenidos.</p>
+                
+                <p>En ningún caso Desco IT asumirá responsabilidad alguna por los contenidos de algún enlace perteneciente a un sitio web ajeno, ni garantizará la disponibilidad técnica, calidad, fiabilidad, exactitud, amplitud, veracidad, validez y constitucionalidad de cualquier material o información contenida en cualquiera de dichos hipervínculos u otros sitios de Internet.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fas fa-edit"></i> Modificaciones</h2>
+                <p>Desco IT se reserva el derecho a efectuar sin previo aviso las modificaciones que considere oportunas en su sitio web, pudiendo cambiar, suprimir o añadir tanto los contenidos y servicios que se presten a través de la misma como la forma en la que éstos aparezcan presentados o localizados en su sitio web.</p>
+                
+                <p>Los presentes términos y condiciones podrán ser modificados en cualquier momento. Las modificaciones entrarán en vigor a partir del momento de su publicación en este sitio web.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fas fa-gavel"></i> Legislación aplicable y jurisdicción</h2>
+                <p>Para la resolución de todas las controversias o cuestiones relacionadas con el presente sitio web o de las actividades en él desarrolladas, será de aplicación la legislación española, a la que se someten expresamente las partes, siendo competentes para la resolución de todos los conflictos derivados o relacionados con su uso los Juzgados y Tribunales de Madrid.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2><i class="fas fa-envelope"></i> Contacto</h2>
+                <p>Para cualquier consulta sobre estos Términos y Condiciones, puedes contactarnos en:</p>
+                <div class="info-box">
+                    <p><strong>Email:</strong> daniel.escobar@descoit.es</p>
+                    <p><strong>Asunto:</strong> Consulta sobre Términos y Condiciones</p>
+                    <p><strong>Horario de atención:</strong> Lunes a Viernes de 9:00 a 18:00</p>
+                </div>
+            </section>
+
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Volver a la Página Principal
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="legal-footer">
+        <div class="container">
+            <div class="legal-footer-content">
+                <div class="legal-footer-brand">
+                    <h3>Desco IT & Security Solutions</h3>
+                    <p>Tu socio tecnológico de confianza en Madrid. Especialistas en soporte IT y ciberseguridad para PYMES.</p>
+                </div>
+                <div class="legal-footer-links">
+                    <div class="legal-footer-col">
+                        <h4>Documentos Legales</h4>
+                        <ul>
+                            <li><a href="privacidad.html"><i class="fas fa-chevron-right"></i> Política de Privacidad</a></li>
+                            <li><a href="aviso-legal.html"><i class="fas fa-chevron-right"></i> Aviso Legal</a></li>
+                            <li><a href="cookies.html"><i class="fas fa-chevron-right"></i> Política de Cookies</a></li>
+                            <li><a href="terminos.html"><i class="fas fa-chevron-right"></i> Términos y Condiciones</a></li>
+                        </ul>
+                    </div>
+                    <div class="legal-footer-col">
+                        <h4>Navegación</h4>
+                        <ul>
+                            <li><a href="index.html#inicio"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                            <li><a href="index.html#servicios"><i class="fas fa-chevron-right"></i> Servicios</a></li>
+                            <li><a href="index.html#planes"><i class="fas fa-chevron-right"></i> Planes</a></li>
+                            <li><a href="index.html#contacto"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+                        </ul>
+                    </div>
+                    <div class="legal-footer-col">
+                        <h4>Contacto</h4>
+                        <ul>
+                            <li><a href="mailto:info@descoit.com"><i class="fas fa-chevron-right"></i> info@descoit.com</a></li>
+                            <li><a href="tel:+34636314288"><i class="fas fa-chevron-right"></i> +34 636 314 288</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Madrid, España</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="legal-footer-bottom">
+                <p>&copy; 2025 Desco IT & Security Solutions. Todos los derechos reservados.</p>
+                <p><small>Última actualización: Enero 2026</small></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script para manejar enlaces suaves
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#' || href.startsWith('#!')) return;
+                
+                e.preventDefault();
+                const targetElement = document.querySelector(href);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
