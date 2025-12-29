@@ -42,36 +42,39 @@ document.addEventListener('DOMContentLoaded', function() {
     initFAQ();
 });
 
-// Formulario de contacto
+// Formulario de contacto con EmailJS
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
+        e.preventDefault(); // Evita que la página recargue
+
         // Obtener los valores del formulario
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const phone = document.getElementById('phone').value;
         const service = document.getElementById('serviceSelect').value;
         const message = document.getElementById('message').value;
-        
+
         // Validación básica
         if (!name || !email || !service) {
             alert('Por favor, completa los campos obligatorios (Nombre, Email y Servicio)');
             return;
         }
-        
-        // Simulación de envío (en un caso real, aquí iría una petición AJAX)
-        console.log('Formulario enviado:', { name, email, phone, service, message });
-        
-        // Mostrar mensaje de éxito
-        alert('¡Gracias por contactarnos! Te responderemos en menos de 24 horas.');
-        
-        // Resetear formulario
-        contactForm.reset();
+
+        // Enviar formulario con EmailJS
+        emailjs.sendForm('service_9mn4n3i', 'template_mpp7j4g', this)
+            .then(function() {
+                // Mensaje de éxito
+                alert('¡Gracias por contactarnos! Te responderemos en menos de 48 horas.');
+                contactForm.reset();
+            }, function(error) {
+                alert('Error al enviar el mensaje ❌');
+                console.error(error);
+            });
     });
 }
+
 
 // Scroll suave para enlaces internos
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

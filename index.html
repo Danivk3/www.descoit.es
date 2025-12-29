@@ -44,6 +44,8 @@
     }
     </script>
 </head>
+
+
 <body>
     <!-- Header / Navegación -->
     <header class="header" id="header">
@@ -530,41 +532,40 @@
                     </div>-->
                 </div>
                 
-                <div class="contact-form">
-                    <h3>SERVICIO REQUERIDO</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" id="name" placeholder="Nombre completo" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" placeholder="Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" id="phone" placeholder="Teléfono">
-                        </div>
-                        <div class="form-group">
-                            <select id="serviceSelect" required>
-                                <option value="" disabled selected>Selecciona un servicio</option>
-                                <option value="soporte">Soporte Técnico</option>
-                                <option value="seguridad">Seguridad / Ciberseguridad</option>
-                                <option value="pack-esencial">Pack Esencial (100€/mes)</option>
-                                <option value="pack-intermedio">Pack Intermedio (220€/mes)</option>
-                                <option value="pack-premium">Pack Premium (400€/mes)</option>
-                                <option value="pack-adaptable">Pack Adaptable</option>
-                                <option value="bolsa-horas">Bolsa de Horas</option>
-                                <option value="landing-page">Landing Page / Web Básica (desde 100€)</option>
-                                <option value="auditoria">Auditoría Gratuita</option>
-                                <option value="consulta">Consulta General</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" rows="5" placeholder="Describe tu proyecto o necesidad..."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+				 <div class="contact-form">
+				  <h3>SERVICIO REQUERIDO</h3>
+				  <form id="contactForm">
+					<div class="form-group">
+					  <input type="text" id="name" name="name" placeholder="Nombre completo" required>
+					</div>
+					<div class="form-group">
+					  <input type="email" id="email" name="email" placeholder="Email" required>
+					</div>
+					<div class="form-group">
+					  <input type="tel" id="phone" name="phone" placeholder="Teléfono">
+					</div>
+					<div class="form-group">
+					  <select id="serviceSelect" name="service" required>
+						<option value="" disabled selected>Selecciona un servicio</option>
+						<option value="soporte">Soporte Técnico</option>
+						<option value="seguridad">Seguridad / Ciberseguridad</option>
+						<option value="pack-esencial">Pack Esencial (100€/mes)</option>
+						<option value="pack-intermedio">Pack Intermedio (220€/mes)</option>
+						<option value="pack-premium">Pack Premium (400€/mes)</option>
+						<option value="pack-adaptable">Pack Adaptable</option>
+						<option value="bolsa-horas">Bolsa de Horas</option>
+						<option value="landing-page">Landing Page / Web Básica (desde 100€)</option>
+						<option value="auditoria">Auditoría Gratuita</option>
+						<option value="consulta">Consulta General</option>
+					  </select>
+					</div>
+					<div class="form-group">
+					  <textarea id="message" name="message" rows="5" placeholder="Describe tu proyecto o necesidad..."></textarea>
+					</div>
+					<button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+				  </form>
+				</div>
+
     </section>
 
     <!-- Footer Compacto -->
@@ -641,6 +642,21 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    
+	  <!-- TU HTML, form, etc. -->
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("6VXsTIWOlWsT0j4Bi");
+    })();
+  </script>
+
+  <!-- Tu JS -->
+ <script src="script.js"></script>
+</body>
+</html>
+
 </body>
 </html>
