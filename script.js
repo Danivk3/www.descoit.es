@@ -42,14 +42,14 @@ document.addEventListener('DOMContentLoaded', function() {
     initFAQ();
 });
 
-// Formulario de contacto con EmailJS
+// Formulario de contacto
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
-        e.preventDefault(); // Evita que la página recargue
-
-        // Obtener los valores del formulario
+        e.preventDefault();
+        
+        // Obtener valores del formulario
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const phone = document.getElementById('phone').value;
@@ -64,14 +64,18 @@ if (contactForm) {
 
         // Enviar formulario con EmailJS
         emailjs.sendForm('service_9mn4n3i', 'template_mpp7j4g', this)
-            .then(function() {
-                // Mensaje de éxito
-                alert('¡Gracias por contactarnos! Te responderemos en menos de 48 horas.');
-                contactForm.reset();
+            .then(function(response) {
+                console.log('Formulario enviado:', response.status, response.text);
+                
+                // Redirigir a la página de confirmación
+                window.location.href = 'confirmacion-formulario.html';
             }, function(error) {
-                alert('Error al enviar el mensaje ❌');
-                console.error(error);
+                console.error('Error al enviar el formulario:', error);
+                alert('Ha ocurrido un error al enviar el formulario. Inténtalo de nuevo.');
             });
+
+        // Opcional: resetear formulario
+        contactForm.reset();
     });
 }
 
