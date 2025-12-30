@@ -1,212 +1,190 @@
+// ============================================
+// FUNCIONES PRINCIPALES
+// ============================================
+
 // Navegación móvil
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const header = document.getElementById('header');
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        if (navMenu) navMenu.classList.toggle('active');
+    });
+}
 
 // Cerrar menú al hacer clic en un enlace
-document.querySelectorAll('.nav-menu a').forEach(n => n.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navMenu.classList.remove('active');
-}));
+function closeMobileMenu() {
+    if (hamburger && navMenu) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    }
+}
+
+if (navMenu) {
+    document.querySelectorAll('.nav-menu a').forEach(n => n.addEventListener('click', closeMobileMenu));
+}
 
 // Cambiar color del header al hacer scroll
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
+    if (header) {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
     }
 });
 
+// ============================================
+// SCROLL SUAVE UNIVERSAL - PARA TODOS LOS ENLACES
+// ============================================
+
+function initSmoothScroll() {
+    // Seleccionar TODOS los enlaces que empiezan con #
+    const allLinks = document.querySelectorAll('a[href^="#"]');
+    
+    allLinks.forEach(link => {
+        // Remover event listeners previos para evitar duplicados
+        link.removeEventListener('click', handleSmoothScroll);
+        
+        // Añadir nuevo event listener
+        link.addEventListener('click', handleSmoothScroll);
+    });
+    
+    console.log(`Scroll suave aplicado a ${allLinks.length} enlaces internos`);
+}
+
+function handleSmoothScroll(e) {
+    const href = this.getAttribute('href');
+    
+    // Ignorar enlaces vacíos o especiales
+    if (href === '#' || href === '#!' || href === '#0' || href === '') return;
+    
+    // Encontrar el elemento destino
+    const targetElement = document.querySelector(href);
+    
+    if (targetElement) {
+        e.preventDefault();
+        
+        // Cerrar menú móvil si está abierto
+        closeMobileMenu();
+        
+        // Calcular posición con offset del header
+        let offset = 80; // Offset por defecto
+        
+        if (header) {
+            offset = header.offsetHeight;
+        }
+        
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+        
+        // Hacer scroll suave
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+        
+        // Cambiar URL sin recargar (mejor UX)
+        if (history.pushState) {
+            history.pushState(null, null, href);
+        }
+        
+        // Enfocar el elemento destino para accesibilidad
+        setTimeout(() => {
+            targetElement.setAttribute('tabindex', '-1');
+            targetElement.focus();
+            targetElement.removeAttribute('tabindex');
+        }, 1000);
+    }
+}
+
+// ============================================
+// FUNCIONES AUXILIARES
+// ============================================
+
 // Ajustar el padding-top del hero para compensar la altura del header fijo
-document.addEventListener('DOMContentLoaded', function() {
+function adjustHeroPadding() {
     const hero = document.querySelector('.hero');
     if (hero && header) {
         const headerHeight = header.offsetHeight;
         hero.style.paddingTop = `calc(180px + ${headerHeight}px)`;
         hero.style.marginTop = `-${headerHeight}px`;
     }
-    
-    // Configurar autocompletado del formulario
-    setupFormAutofill();
-    
-    // Manejar parámetros de URL
-    handleUrlParameters();
-    
-    // Inicializar FAQ
-    initFAQ();
-});
-
-// Formulario de contacto
-const contactForm = document.getElementById('contactForm');
-
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Obtener valores del formulario
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value;
-        const service = document.getElementById('serviceSelect').value;
-        const message = document.getElementById('message').value;
-
-        // Validación básica
-        if (!name || !email || !service) {
-            alert('Por favor, completa los campos obligatorios (Nombre, Email y Servicio)');
-            return;
-        }
-
-        // Enviar formulario con EmailJS
-        emailjs.sendForm('service_9mn4n3i', 'template_mpp7j4g', this)
-            .then(function(response) {
-                console.log('Formulario enviado:', response.status, response.text);
-                
-                // Redirigir a la página de confirmación
-                window.location.href = 'confirmacion-formulario.html';
-            }, function(error) {
-                console.error('Error al enviar el formulario:', error);
-                alert('Ha ocurrido un error al enviar el formulario. Inténtalo de nuevo.');
-            });
-
-        // Opcional: resetear formulario
-        contactForm.reset();
-    });
 }
 
-
-// Scroll suave para enlaces internos
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            // Ajustar la posición considerando el header fijo
-            const headerHeight = document.getElementById('header').offsetHeight;
-            const targetPosition = targetElement.offsetTop - headerHeight;
-            
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// Efecto de aparición al hacer scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
-        }
-    });
-}, observerOptions);
-
-// Observar elementos para animación
-document.querySelectorAll('.service-card, .plan-card').forEach(el => {
-    observer.observe(el);
-});
-
-// Mostrar año actual en el footer
-const currentYear = new Date().getFullYear();
-const yearElement = document.querySelector('.footer-copyright p');
-if (yearElement) {
-    yearElement.innerHTML = yearElement.innerHTML.replace('2023', currentYear);
-}
-
-// Función para autorellenar el formulario cuando se hace clic en botones
+// Configurar autocompletado del formulario
 function setupFormAutofill() {
-    // Obtener todos los botones con data-service
     const planButtons = document.querySelectorAll('[data-service]');
     const serviceSelect = document.getElementById('serviceSelect');
     
-    // Añadir evento a cada botón
+    if (!serviceSelect) return;
+    
     planButtons.forEach(button => {
         button.addEventListener('click', function(e) {
-            // Solo procesar si es un enlace interno al contacto
             const href = this.getAttribute('href');
             if (href && href.startsWith('#contacto')) {
                 e.preventDefault();
                 
-                // Obtener el valor del servicio del atributo data-service
                 const serviceValue = this.getAttribute('data-service');
                 
-                // Verificar si el select existe
-                if (serviceSelect) {
-                    // Añadir clase de animación
-                    serviceSelect.classList.add('autofilled');
-                    
-                    // Buscar la opción que coincida con el valor
-                    let optionFound = false;
-                    for (let option of serviceSelect.options) {
-                        if (option.value === serviceValue) {
-                            optionFound = true;
-                            break;
-                        }
+                // Añadir clase de animación
+                serviceSelect.classList.add('autofilled');
+                
+                // Buscar y seleccionar la opción
+                let optionFound = false;
+                for (let option of serviceSelect.options) {
+                    if (option.value === serviceValue) {
+                        optionFound = true;
+                        break;
                     }
+                }
+                
+                if (optionFound) {
+                    serviceSelect.value = serviceValue;
+                } else {
+                    serviceSelect.value = 'consulta';
+                }
+                
+                // Remover clase de animación después de 2 segundos
+                setTimeout(() => {
+                    serviceSelect.classList.remove('autofilled');
+                }, 2000);
+                
+                // Desplazarse al formulario
+                const contactSection = document.getElementById('contacto');
+                if (contactSection) {
+                    const headerHeight = header ? header.offsetHeight : 80;
+                    const targetPosition = contactSection.offsetTop - headerHeight;
                     
-                    // Si se encuentra la opción, seleccionarla
-                    if (optionFound) {
-                        serviceSelect.value = serviceValue;
-                    } else {
-                        // Si no se encuentra, seleccionar "Consulta General"
-                        serviceSelect.value = 'consulta';
-                    }
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
                     
-                    // Remover clase de animación después de 2 segundos
+                    // Enfocar el primer campo después del desplazamiento
                     setTimeout(() => {
-                        serviceSelect.classList.remove('autofilled');
-                    }, 2000);
-                    
-                    // Desplazarse al formulario
-                    const contactSection = document.getElementById('contacto');
-                    if (contactSection) {
-                        const headerHeight = document.getElementById('header').offsetHeight;
-                        const targetPosition = contactSection.offsetTop - headerHeight;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Enfocar el primer campo del formulario después del desplazamiento
-                        setTimeout(() => {
-                            const firstInput = document.querySelector('#contactForm input');
-                            if (firstInput) {
-                                firstInput.focus();
-                            }
-                        }, 800);
-                    }
+                        const firstInput = document.querySelector('#contactForm input');
+                        if (firstInput) {
+                            firstInput.focus();
+                        }
+                    }, 800);
                 }
             }
         });
     });
 }
 
-// Función para manejar parámetros de URL
+// Manejar parámetros de URL
 function handleUrlParameters() {
-    // Verificar si hay un parámetro en la URL para preseleccionar un servicio
     const urlParams = new URLSearchParams(window.location.search);
     const presetService = urlParams.get('service');
     
     if (presetService) {
         const serviceSelect = document.getElementById('serviceSelect');
         if (serviceSelect) {
-            // Buscar si existe la opción
             let optionFound = false;
             for (let option of serviceSelect.options) {
                 if (option.value === presetService) {
@@ -215,21 +193,18 @@ function handleUrlParameters() {
                 }
             }
             
-            // Si se encuentra, seleccionarla
             if (optionFound) {
                 serviceSelect.value = presetService;
                 serviceSelect.classList.add('autofilled');
                 
-                // Remover clase de animación después de 2 segundos
                 setTimeout(() => {
                     serviceSelect.classList.remove('autofilled');
                 }, 2000);
                 
-                // Desplazarse al formulario
                 setTimeout(() => {
                     const contactSection = document.getElementById('contacto');
                     if (contactSection) {
-                        const headerHeight = document.getElementById('header').offsetHeight;
+                        const headerHeight = header ? header.offsetHeight : 80;
                         const targetPosition = contactSection.offsetTop - headerHeight;
                         
                         window.scrollTo({
@@ -243,11 +218,10 @@ function handleUrlParameters() {
     }
 }
 
-// Función para inicializar el FAQ (acordeón mejorado)
+// Inicializar FAQ
 function initFAQ() {
     const faqItems = document.querySelectorAll('.faq-item');
     
-    // Abrir el primer FAQ por defecto para mejor UX
     if (faqItems.length > 0) {
         faqItems[0].classList.add('active');
     }
@@ -256,19 +230,18 @@ function initFAQ() {
         const questionHeader = item.querySelector('.faq-question-header');
         const toggle = item.querySelector('.faq-toggle');
         
-        questionHeader.addEventListener('click', () => {
-            // Cerrar otros items abiertos
-            faqItems.forEach(otherItem => {
-                if (otherItem !== item && otherItem.classList.contains('active')) {
-                    otherItem.classList.remove('active');
-                }
+        if (questionHeader) {
+            questionHeader.addEventListener('click', () => {
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                item.classList.toggle('active');
             });
-            
-            // Alternar el item actual
-            item.classList.toggle('active');
-        });
+        }
         
-        // También permitir clic en el toggle
         if (toggle) {
             toggle.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -277,3 +250,92 @@ function initFAQ() {
         }
     });
 }
+
+// Mostrar año actual en el footer
+function updateCopyrightYear() {
+    const currentYear = new Date().getFullYear();
+    const yearElement = document.querySelector('.footer-copyright p');
+    if (yearElement) {
+        yearElement.innerHTML = yearElement.innerHTML.replace('2023', currentYear)
+                                                     .replace('2024', currentYear)
+                                                     .replace('2025', currentYear);
+    }
+}
+
+// Efecto de aparición al hacer scroll
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.service-card, .plan-card').forEach(el => {
+        observer.observe(el);
+    });
+}
+
+// ============================================
+// INICIALIZACIÓN CUANDO EL DOM ESTÁ LISTO
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM cargado - Inicializando funciones...');
+    
+    // Ajustar hero padding
+    adjustHeroPadding();
+    
+    // Configurar formulario
+    setupFormAutofill();
+    
+    // Manejar parámetros de URL
+    handleUrlParameters();
+    
+    // Inicializar FAQ
+    initFAQ();
+    
+    // Actualizar año copyright
+    updateCopyrightYear();
+    
+    // Inicializar animaciones scroll
+    initScrollAnimations();
+    
+    // INICIALIZAR SCROLL SUAVE
+    initSmoothScroll();
+    
+    // Re-aplicar scroll suave después de un tiempo por si hay enlaces dinámicos
+    setTimeout(initSmoothScroll, 1000);
+    setTimeout(initSmoothScroll, 3000);
+});
+
+// ============================================
+// MANEJAR ENLACES DINÁMICOS (por si acaso)
+// ============================================
+
+// Observar cambios en el DOM para aplicar scroll suave a nuevos enlaces
+if (typeof MutationObserver !== 'undefined') {
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.addedNodes.length) {
+                setTimeout(initSmoothScroll, 100);
+            }
+        });
+    });
+    
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+}
+
+// También aplicar cuando la página termine de cargar completamente
+window.addEventListener('load', function() {
+    setTimeout(initSmoothScroll, 500);
+});
