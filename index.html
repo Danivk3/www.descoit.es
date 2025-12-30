@@ -643,7 +643,7 @@
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const service = document.getElementById('serviceSelect').value;
-			const date = new Date().toLocaleString();
+
 
 
             
@@ -653,7 +653,7 @@
             }
             
             // Enviar formulario con EmailJS
-            emailjs.sendForm('service_9mn4n3i', 'template_mpp7j4g', this,{ date: date })
+            emailjs.sendForm('service_9mn4n3i', 'template_mpp7j4g', this)
                 .then(function(response) {
                     console.log('Éxito!', response.status, response.text);
                     // Redirigir a la página de confirmación
