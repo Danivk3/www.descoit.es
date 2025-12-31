@@ -1631,7 +1631,7 @@ section {
     }
     
     .logo-text {
-        display: none;
+        display: flex;
     }
     
     .audit-content h2 {
@@ -1779,13 +1779,26 @@ html {
 
 @media (max-width: 768px) {
   [id] {
-    scroll-margin-top: 70px;
+    scroll-margin-top: 60px;
   }
 }
 
 @media (max-width: 480px) {
   [id] {
-    scroll-margin-top: 60px;
+    scroll-margin-top: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-logo-section {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .footer-logo-img {
+    display: block;
+    margin: 0 auto;
   }
 }
 
