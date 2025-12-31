@@ -188,7 +188,7 @@ section {
     color: var(--text-light);
     line-height: 1;
     transition: var(--transition);
-	margin-top: 4px;
+	margin-top: 5px;
 }
 
 .logo-subtitle {
