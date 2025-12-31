@@ -1508,6 +1508,7 @@ section {
         max-width: 100%;
         justify-content: center;
         text-align: center;
+		align-items: center;
     }
     
     .footer-links-grid {
@@ -1740,6 +1741,7 @@ section {
     .footer-logo-section {
         flex-direction: column;
         text-align: center;
+		align-items: center;
         gap: 10px;
     }
     
