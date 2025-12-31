@@ -125,7 +125,7 @@ function setupFormAutofill() {
     planButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            if (href && href.startsWith('#contacto')) {
+            if (href && href.startsWith('#contact-form')) {
                 e.preventDefault();
                 
                 const serviceValue = this.getAttribute('data-service');
