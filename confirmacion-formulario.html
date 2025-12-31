@@ -1,595 +1,202 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Mensaje Enviado! - Desco IT & Security Solutions</title>
-    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-    
-    <!-- Mismas fuentes y estilos -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <!-- Estilos específicos para la página de confirmación compacta -->
-    <style>
-        /* Reset para eliminar márgenes y padding */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        /* Estilos para la página de confirmación COMPACTA */
-        .confirmation-page-compact {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--primary-color) 0%, #1e293b 100%);
-            position: relative;
-            overflow: hidden;
-            padding: 20px;
-        }
-        
-        .confirmation-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9));
-            z-index: 1;
-        }
-        
-        .confirmation-container-compact {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            max-width: 600px;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .confirmation-card-compact {
-            background-color: white;
-            border-radius: 16px;
-            padding: 40px 35px;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--light-gray);
-        }
-        
-        .confirmation-card-compact::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
-        }
-        
-        /* Logo compacto */
-        .confirmation-logo-compact {
-            margin-bottom: 25px;
-            text-align: center;
-        }
-        
-        .confirmation-logo-img-compact {
-            height: 60px;
-            width: auto;
-            margin-bottom: 10px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .confirmation-logo-text-compact {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .confirmation-logo-title-compact {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 1.6rem;
-            color: var(--primary-color);
-            line-height: 1;
-            margin-bottom: 4px;
-        }
-        
-        .confirmation-logo-subtitle-compact {
-            font-family: 'Open Sans', sans-serif;
-            font-size: 0.8rem;
-            color: var(--secondary-color);
-            font-weight: 600;
-            letter-spacing: 0.4px;
-        }
-        
-        /* Icono y título compactos */
-        .confirmation-header-compact {
-            margin-bottom: 25px;
-        }
-        
-        .confirmation-icon-compact {
-            font-size: 3.2rem;
-            color: var(--success-color);
-            margin-bottom: 15px;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .confirmation-title-compact {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2rem;
-            color: var(--dark-color);
-            margin-bottom: 15px;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-        
-        .confirmation-subtitle-compact {
-            font-size: 1.1rem;
-            color: var(--gray-color);
-            margin-bottom: 25px;
-            line-height: 1.5;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* Mensaje compacto */
-        .confirmation-message-compact {
-            background-color: var(--light-bg);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 30px;
-            border-left: 4px solid var(--secondary-color);
-            text-align: left;
-        }
-        
-        .confirmation-message-compact h3 {
-            color: var(--dark-color);
-            margin-bottom: 12px;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .confirmation-message-compact h3 i {
-            color: var(--secondary-color);
-            font-size: 1rem;
-        }
-        
-        .confirmation-message-compact p {
-            color: var(--gray-color);
-            line-height: 1.5;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-        }
-        
-        .confirmation-message-compact strong {
-            color: var(--secondary-color);
-            font-weight: 600;
-        }
-        
-        /* Botón único centrado */
-        .confirmation-actions-compact {
-            margin-top: 30px;
-        }
-        
-        .confirmation-btn-compact {
-            padding: 16px 40px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background-color: var(--secondary-color);
-            color: white;
-            border: none;
-            cursor: pointer;
-            min-width: 240px;
-        }
-        
-        .confirmation-btn-compact:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-        
-        .confirmation-btn-compact i {
-            font-size: 1.2rem;
-            transition: transform 0.3s ease;
-        }
-        
-        .confirmation-btn-compact:hover i {
-            transform: translateX(-5px);
-        }
-        
-        /* Información de contacto compacta */
-        .contact-info-compact {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid var(--light-gray);
-        }
-        
-        .contact-info-compact h4 {
-            color: var(--dark-color);
-            margin-bottom: 15px;
-            font-size: 1rem;
-            font-weight: 600;
-        }
-        
-        .contact-details-compact {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .contact-item-compact {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 15px;
-            background-color: var(--light-bg);
-            border-radius: 8px;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-        
-        .contact-item-compact:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-        }
-        
-        .contact-item-compact i {
-            font-size: 1.1rem;
-            color: var(--secondary-color);
-        }
-        
-        .contact-item-compact span {
-            font-weight: 600;
-            color: var(--dark-color);
-        }
-        
-        /* Animación de partículas de fondo reducida */
-        .particles-compact {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        
-        .particle-compact {
-            position: absolute;
-            background-color: rgba(37, 99, 235, 0.08);
-            border-radius: 50%;
-            animation: floatCompact 20s infinite linear;
-        }
-        
-        @keyframes floatCompact {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-800px) rotate(720deg);
-                opacity: 0;
-            }
-        }
-        
-        /* Responsive para mantener sin scroll */
-        @media (max-width: 768px) {
-            .confirmation-page-compact {
-                padding: 15px;
-            }
-            
-            .confirmation-card-compact {
-                padding: 30px 25px;
-            }
-            
-            .confirmation-title-compact {
-                font-size: 1.7rem;
-            }
-            
-            .confirmation-subtitle-compact {
-                font-size: 1rem;
-            }
-            
-            .confirmation-logo-img-compact {
-                height: 50px;
-            }
-            
-            .confirmation-logo-title-compact {
-                font-size: 1.4rem;
-            }
-            
-            .confirmation-icon-compact {
-                font-size: 2.8rem;
-            }
-            
-            .confirmation-btn-compact {
-                padding: 14px 30px;
-                font-size: 1rem;
-                min-width: 200px;
-            }
-            
-            .contact-details-compact {
-                flex-direction: column;
-                gap: 12px;
-                align-items: center;
-            }
-            
-            .contact-item-compact {
-                width: 100%;
-                max-width: 250px;
-                justify-content: center;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .confirmation-card-compact {
-                padding: 25px 20px;
-            }
-            
-            .confirmation-title-compact {
-                font-size: 1.5rem;
-            }
-            
-            .confirmation-subtitle-compact {
-                font-size: 0.95rem;
-            }
-            
-            .confirmation-logo-img-compact {
-                height: 45px;
-            }
-            
-            .confirmation-logo-title-compact {
-                font-size: 1.3rem;
-            }
-            
-            .confirmation-logo-subtitle-compact {
-                font-size: 0.75rem;
-            }
-            
-            .confirmation-icon-compact {
-                font-size: 2.5rem;
-            }
-            
-            .confirmation-message-compact {
-                padding: 15px;
-            }
-            
-            .confirmation-message-compact h3 {
-                font-size: 1rem;
-            }
-            
-            .confirmation-message-compact p {
-                font-size: 0.9rem;
-            }
-            
-            .confirmation-btn-compact {
-                width: 100%;
-                min-width: auto;
-            }
-        }
-        
-        @media (max-height: 700px) {
-            .confirmation-page-compact {
-                align-items: flex-start;
-                padding-top: 30px;
-                padding-bottom: 30px;
-            }
-            
-            .confirmation-card-compact {
-                padding: 25px 20px;
-            }
-            
-            .confirmation-logo-compact {
-                margin-bottom: 15px;
-            }
-            
-            .confirmation-header-compact {
-                margin-bottom: 15px;
-            }
-            
-            .confirmation-title-compact {
-                font-size: 1.6rem;
-                margin-bottom: 10px;
-            }
-            
-            .confirmation-subtitle-compact {
-                font-size: 0.95rem;
-                margin-bottom: 15px;
-            }
-            
-            .confirmation-message-compact {
-                margin-bottom: 20px;
-                padding: 15px;
-            }
-            
-            .confirmation-actions-compact {
-                margin-top: 20px;
-            }
-            
-            .contact-info-compact {
-                margin-top: 20px;
-                padding-top: 15px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¡Mensaje Enviado! - Desco IT & Security Solutions</title>
+<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --primary-color: #0f172a;   /* Azul cabecera */
+        --secondary-color: #2563eb; /* Azul línea y borde */
+        --accent-color: #1e40af;
+        --success-color: #10b981;
+        --light-bg: #ffffff;
+        --gray-bg: #f0f2f5;
+        --gray-color: #4b5563;
+        --dark-color: #1f2937;
+        --light-gray: #e2e8f0;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+        font-family: 'Open Sans', sans-serif;
+        background-color: var(--gray-bg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    .confirmation-container {
+        max-width: 500px;
+        width: 100%;
+        background-color: var(--light-bg);
+        border: 2px solid #0f172a;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .card-header {
+        background: linear-gradient(135deg, var(--primary-color) 0%, #1e293b 100%);
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    .card-header img {
+        max-width: 160px;
+        height: auto;
+    }
+
+    .card-header-line {
+        height: 5px;
+        background-color: var(--secondary-color);
+    }
+
+    .card-content {
+        padding: 25px 20px;
+        text-align: center;
+    }
+
+    .confirmation-icon {
+        font-size: 3rem;
+        color: var(--success-color);
+        margin-bottom: 20px;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+
+    .confirmation-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.8rem;
+        color: var(--dark-color);
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+
+    .confirmation-subtitle {
+        font-size: 1rem;
+        color: var(--gray-color);
+        margin-bottom: 20px;
+    }
+
+    .confirmation-message {
+        text-align: left;
+        border-left: 4px solid var(--secondary-color);
+        padding: 15px 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        background-color: #f8fafc;
+    }
+
+    .confirmation-message h3 {
+        font-size: 1.05rem;
+        margin-bottom: 10px;
+        color: var(--dark-color);
+    }
+
+    .confirmation-message p {
+        font-size: 0.95rem;
+        margin-bottom: 6px;
+        color: var(--gray-color);
+    }
+
+    .confirmation-btn {
+        display: inline-block;
+        padding: 14px 35px;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 8px;
+        background-color: var(--secondary-color);
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        margin-bottom: 20px;
+    }
+
+    .confirmation-btn:hover {
+        background-color: var(--accent-color);
+    }
+
+    .contact-info {
+        margin-top: 20px;
+        border-top: 1px solid var(--light-gray);
+        padding-top: 15px;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+    }
+
+    .contact-item i {
+        color: var(--secondary-color);
+    }
+
+    @media (max-width: 500px){
+        .card-content { padding: 20px 15px; }
+        .confirmation-title { font-size: 1.6rem; }
+        .confirmation-subtitle { font-size: 0.95rem; }
+        .confirmation-icon { font-size: 2.5rem; }
+        .confirmation-btn { padding: 12px 30px; font-size: 0.95rem; }
+    }
+	
+	.hanging {
+    margin-left: 0;          /* margen general del párrafo */
+    padding-left: 20px;      /* espacio reservado para el número */
+    text-indent: -18px;      /* mueve la primera línea hacia la izquierda, dejando el número fuera */
+}
+
+</style>
 </head>
 <body>
-    <!-- Página de Confirmación COMPACTA -->
-    <section class="confirmation-page-compact">
-        <!-- Partículas decorativas de fondo reducidas -->
-        <div class="particles-compact" id="particles"></div>
-        
-        <div class="confirmation-overlay"></div>
-        
-        <div class="confirmation-container-compact">
-            <div class="confirmation-card-compact">
-                <!-- Logo Desco IT compacto -->
-                <div class="confirmation-logo-compact">
-                    <img src="assets/images/logo-sinfondo.png" 
-                         alt="Desco IT & Security Solutions" 
-                         class="confirmation-logo-img-compact">
-                    <div class="confirmation-logo-text-compact">
-                        <span class="confirmation-logo-title-compact">DESCO</span>
-                        <span class="confirmation-logo-subtitle-compact">IT & Security Solutions</span>
-                    </div>
-                </div>
-                
-                <!-- Icono y título -->
-                <div class="confirmation-header-compact">
-                    <div class="confirmation-icon-compact">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    
-                    <h1 class="confirmation-title-compact">¡Mensaje Enviado!</h1>
-                    
-                    <p class="confirmation-subtitle-compact">
-                        Gracias por contactar con <strong>Desco IT & Security Solutions</strong>. 
-                        Te responderemos en menos de 48 horas.
-                    </p>
-                </div>
-                
-                <!-- Mensaje informativo compacto -->
-                <div class="confirmation-message-compact">
-                    <h3><i class="fas fa-info-circle"></i> ¿Qué sucede ahora?</h3>
-                    <p><strong>1.</strong> Recibirás un email de confirmación.</p>
-                    <p><strong>2.</strong> Analizaremos tu solicitud.</p>
-                    <p><strong>3.</strong> Te contactaremos con una propuesta.</p>
-                    <p><strong>4.</strong> Comenzaremos a trabajar inmediatamente.</p>
-                </div>
-                
-                <!-- Botón único centrado -->
-                <div class="confirmation-actions-compact">
-                    <a href="index.html" class="confirmation-btn-compact">
-                        <i class="fas fa-arrow-left"></i> Volver al Inicio
-                    </a>
-                </div>
-                
-                <!-- Información de contacto compacta -->
-                <div class="contact-info-compact">
-                    <h4>Contacto inmediato:</h4>
-                    <div class="contact-details-compact">
-                        <div class="contact-item-compact">
-                            <i class="fas fa-phone"></i>
-                            <span>+34 636 314 288</span>
-                        </div>
-                        <div class="contact-item-compact">
-                            <i class="fas fa-envelope"></i>
-                            <span>info@descoit.es</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Script para las partículas animadas reducidas -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Crear partículas decorativas reducidas
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 12; // Menos partículas para mejor rendimiento
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle-compact');
-                
-                // Tamaño más pequeño
-                const size = Math.random() * 40 + 15; // 15px a 55px
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                
-                // Posición aleatoria
-                particle.style.left = `${Math.random() * 100}%`;
-                
-                // Retraso aleatorio en la animación
-                particle.style.animationDelay = `${Math.random() * 10}s`;
-                
-                // Opacidad más baja
-                particle.style.opacity = Math.random() * 0.2 + 0.05;
-                
-                // Color aleatorio dentro de la paleta
-                const colors = [
-                    'rgba(37, 99, 235, 0.08)',    // secondary-color
-                    'rgba(30, 64, 175, 0.08)',    // accent-color
-                    'rgba(16, 185, 129, 0.08)',   // success-color
-                ];
-                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                
-                particlesContainer.appendChild(particle);
-            }
-            
-            // Redirigir automáticamente después de 15 segundos (más rápido)
-            setTimeout(() => {
-                // Solo redirigir si el usuario no ha interactuado
-                if (!document.querySelector('.confirmation-btn-compact:hover')) {
-                    window.location.href = 'index.html';
-                }
-            }, 15000);
-            
-            // Contador para redirección (más discreto)
-            let countdown = 15;
-            const countdownElement = document.createElement('div');
-            countdownElement.style.position = 'fixed';
-            countdownElement.style.bottom = '15px';
-            countdownElement.style.right = '15px';
-            countdownElement.style.backgroundColor = 'rgba(255,255,255,0.85)';
-            countdownElement.style.padding = '8px 12px';
-            countdownElement.style.borderRadius = '6px';
-            countdownElement.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
-            countdownElement.style.fontSize = '0.8rem';
-            countdownElement.style.zIndex = '1000';
-            countdownElement.style.fontFamily = "'Open Sans', sans-serif";
-            countdownElement.innerHTML = `Redirigiendo en <strong style="color: var(--secondary-color);">${countdown}</strong> segundos`;
-            document.body.appendChild(countdownElement);
-            
-            const countdownInterval = setInterval(() => {
-                countdown--;
-                countdownElement.innerHTML = `Redirigiendo en <strong style="color: var(--secondary-color);">${countdown}</strong> segundos`;
-                
-                if (countdown <= 0) {
-                    clearInterval(countdownInterval);
-                    countdownElement.remove();
-                }
-            }, 1000);
-        });
-    </script>
+<div class="confirmation-container">
+    <!-- Cabecera azul con logo -->
+    <div class="card-header">
+        <img src="assets/images/logo_sinfondo.png" alt="Desco IT" style="max-width: 200px;">
+    </div>
+    <div class="card-header-line"></div>
+
+    <!-- Contenido de la tarjeta -->
+    <div class="card-content">
+        <div class="confirmation-icon"><i class="fas fa-check-circle"></i></div>
+        <h2 class="confirmation-title">¡Mensaje Enviado!</h2>
+        <p class="confirmation-subtitle">
+            Gracias por contactar con <strong>Desco IT & Security Solutions</strong>. </br>Te responderemos en menos de 48 horas.
+        </p>
+
+        <div class="confirmation-message">
+            <h3>¿Qué sucede ahora?</h3>
+			<p class="hanging"><strong>1.</strong> Analizaremos su solicitud.</p>
+			<p class="hanging"><strong>2.</strong> Le contactaremos con una propuesta personalizada.</p>
+			<p class="hanging"><strong>3.</strong> Si la propuesta es aceptada, comenzaremos a trabajar inmediatamente para ofrecerle el mejor servicio.</p>
+
+        </div>
+
+        <a href="index.html" class="confirmation-btn"><i class="fas fa-arrow-left"></i> Volver al Inicio</a>
+
+        <div class="contact-info">
+            <div class="contact-item"><i class="fas fa-phone"></i> +34 636 314 288</div>
+            <div class="contact-item"><i class="fas fa-envelope"></i> info@descoit.es</div>
+        </div>
+    </div>
+</div>
+
+
 </body>
 </html>
