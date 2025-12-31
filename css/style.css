@@ -1509,6 +1509,7 @@ section {
         justify-content: center;
         text-align: center;
 		align-items: center;
+		align-self: center;
     }
     
     .footer-links-grid {
@@ -1743,6 +1744,7 @@ section {
         text-align: center;
 		align-items: center;
         gap: 10px;
+		align-self:center;
     }
     
     .footer-logo-img {
