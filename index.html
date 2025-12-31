@@ -629,58 +629,55 @@
 <!-- EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
-    (function(){
-        emailjs.init("6VXsTIWOlWsT0j4Bi");
-    })();
-    
+(function () {
+    emailjs.init("6VXsTIWOlWsT0j4Bi");
+})();
+
+document.addEventListener('DOMContentLoaded', function () {
     const contactForm = document.getElementById('contactForm');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Validación básica
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-			const phone = document.getElementById('phone').value;
-            const service = document.getElementById('serviceSelect').value;
-			const message = document.getElementById('message').value;
 
+    if (!contactForm) return;
 
-            
-            if (!name || !email || !service) {
-                alert('Por favor, completa los campos obligatorios (Nombre, Email y Servicio)');
-                return;
-            }
-            
-            // Enviar formulario con EmailJS
-            emailjs.sendForm('service_9mn4n3i', 'template_mpp7j4g', this)
-                .then(function(response) {
-                    console.log('Éxito!', response.status, response.text);
-                    // Redirigir a la página de confirmación
-                    window.location.href = 'confirmacion-formulario.html';
-                }, function(error) {
-                    console.error('Error:', error);
-                    alert('Ocurrió un error al enviar el formulario. Por favor, inténtalo de nuevo.');
-                });
+    contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Validación básica
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const service = document.getElementById('serviceSelect').value;
+
+        if (!name || !email || !service) {
+            alert('Por favor, completa los campos obligatorios (Nombre, Email y Servicio)');
+            return;
+        }
+
+        // 1️⃣ Enviar email al ADMIN
+        emailjs.sendForm(
+            'service_9mn4n3i',
+            'template_contact_admin',
+            this
+        ).then(() => {
+
+            // 2️⃣ Enviar email de CONFIRMACIÓN al CLIENTE
+            return emailjs.sendForm(
+                'service_9mn4n3i',
+                'template_contact_client',
+                this
+            );
+
+        }).then(() => {
+            // Redirección final
+            window.location.href = 'confirmacion-formulario.html';
+        }).catch((error) => {
+            console.error('EmailJS error:', error);
+            alert('Ocurrió un error al enviar el formulario. Inténtalo de nuevo.');
         });
-    }
+    });
+});
 </script>
 
-<!-- Tu JS principal -->
+<!-- Tu JS principal (si lo necesitas) -->
 <script src="script.js"></script>
-  <!-- EmailJS -->
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-  <script>
-    (function(){
-      emailjs.init("6VXsTIWOlWsT0j4Bi");
-    })();
-  </script>
-
-  <!-- Tu JS -->
- <script src="script.js"></script>
- 
- 
  
 </body>
 </html>
