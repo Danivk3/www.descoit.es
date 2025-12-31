@@ -188,6 +188,7 @@ section {
     color: var(--text-light);
     line-height: 1;
     transition: var(--transition);
+	margin-top: 4px;
 }
 
 .logo-subtitle {
@@ -1744,6 +1745,8 @@ section {
     
     .footer-logo-img {
         height: 35px;
+		display: block;
+		margin: 0 auto;
     }
     
     .footer-links-grid {
@@ -1789,18 +1792,6 @@ html {
   }
 }
 
-@media (max-width: 768px) {
-  .footer-logo-section {
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
-  }
-
-  .footer-logo-img {
-    display: block;
-    margin: 0 auto;
-  }
-}
 
 
 /* Eliminar los puntos de lista en FAQ */
