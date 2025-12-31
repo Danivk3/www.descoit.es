@@ -1796,6 +1796,9 @@ html {
   }
 }
 
+#contact-form {
+  scroll-margin-top: 70px;
+}
 
 
 /* Eliminar los puntos de lista en FAQ */
